@@ -6,8 +6,8 @@
 #include <assert.h>
 #include <raylib.h>
 
-#define SEED_RADIUS 5.0f
-#define SEED_COLOR (Color){33, 144, 171, 255}
+#define SEED_RADIUS 3.0f
+#define SEED_COLOR (Color){252, 201, 171, 255}
 
 typedef struct
 {
@@ -15,7 +15,7 @@ typedef struct
 	Color color;
 } voronoi_seed;
 
-#define SEEDS_COUNT 10
+#define SEEDS_COUNT 16
 voronoi_seed seeds[SEEDS_COUNT] = {0};
 
 typedef char display_underlying_type;
@@ -193,6 +193,20 @@ int main(void)
 				current_distance_type = 0;
 			realloc_display(GetScreenWidth(), GetScreenHeight());
 			animation_distance = 0.0f;
+		}
+
+		if (IsKeyPressed(KEY_S))
+		{
+			time_t timer;
+    		char buffer[26];
+    		struct tm* tm_info;
+
+    		timer = time(NULL);
+    		tm_info = localtime(&timer);
+
+    		strftime(buffer, 26, "%d-%m-%Y_%H:%M:%S", tm_info);
+
+			TakeScreenshot(TextFormat("Screenshots/%s.png", buffer));
 		}
 
 		animation_distance += GetFrameTime() * 100;
