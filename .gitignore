@@ -3,4 +3,5 @@ bin/
 obj/
 compile_commands.json
 Makefile
-voronoi_diagram.make
+voronoi_diagram_cpu.make
+voronoi_diagram_shader.make
