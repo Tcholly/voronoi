@@ -131,7 +131,32 @@ int main(void)
 		DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), RED);
 		EndShaderMode();
 		
-		DrawFPS(5, 5);
+
+		const char* distance_type_text;
+
+		switch (current_distance_type)
+		{
+			case EUCLIDEAN_DISTANCE:
+				distance_type_text = "Euclidean distance";
+				break;
+			case MANHATTAN_DISTANCE:
+				distance_type_text = "Manhattan distance";
+				break;
+			case CHEBYSHEV_DISTANCE:
+				distance_type_text = "Chebyshev distance";
+				break;
+			case MINKOWSKI_DISTANCE:
+				distance_type_text = "Minkowski distance";
+				break;
+
+			default:
+				distance_type_text = "Unknown distance";
+				break;
+		}
+
+		DrawText(distance_type_text, 10, 10, 20, LIGHTGRAY);
+
+
 		EndDrawing();
 	}
 
