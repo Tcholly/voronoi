@@ -63,7 +63,6 @@ int main(void)
 		seeds[i].color_loc = GetShaderLocation(voronoi_shader, color_name);
 	}
 
-	int screen_height_loc = GetShaderLocation(voronoi_shader, "screen_height");
 	int distance_type_loc = GetShaderLocation(voronoi_shader, "distance_type");
 	SetShaderValue(voronoi_shader, distance_type_loc, &current_distance_type, SHADER_UNIFORM_INT);
 	int animation_time_loc = GetShaderLocation(voronoi_shader, "animation_time");
@@ -124,8 +123,6 @@ int main(void)
 		BeginDrawing();
 		ClearBackground(WHITE);
 
-		float screen_height = GetScreenHeight();
-		SetShaderValue(voronoi_shader, screen_height_loc, &screen_height, SHADER_UNIFORM_FLOAT);
 		SetShaderValue(voronoi_shader, animation_time_loc, &animation_distance, SHADER_UNIFORM_FLOAT);
 		BeginShaderMode(voronoi_shader);
 		DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), RED);

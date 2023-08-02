@@ -18,7 +18,6 @@ struct Seed
 #define MAX_SEEDS 64 
 uniform Seed seeds[MAX_SEEDS];
 uniform int seeds_count;
-uniform float screen_height;
 uniform float animation_time;
 uniform int distance_type;
 
@@ -46,7 +45,7 @@ float minkowski_distance(vec2 first, vec2 second)
 
 void main()
 {
-    vec2 position = vec2(gl_FragCoord.x, screen_height - gl_FragCoord.y);
+    vec2 position = vec2(gl_FragCoord.x, gl_FragCoord.y);
 
 	float min_distance = 1000000000.0;
 	int seed_index = 0;
